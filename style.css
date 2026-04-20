@@ -246,9 +246,17 @@ ul {
   font-size: 4vw;
   line-height: 1;
   letter-spacing: -0.05em;
-  font-weight: 800;
+  font-weight: 500;
   max-width: 760px;
   margin-bottom: 26px;
+}
+
+.hero-title b {
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 50px;
 }
 
 .hero-title span {
@@ -280,6 +288,9 @@ ul {
   .hero-grid {
     grid-template-columns: 1fr;
   }
+  .hero-title b {
+    font-size: 5vw;
+  }
 }
 
 @media (max-width: 1048px) {
@@ -292,7 +303,7 @@ ul {
   }
 
   .logo {
-    font-size: 8vw;
+    font-size: 5vw;
   }
 
   .hero {
