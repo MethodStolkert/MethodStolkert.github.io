@@ -120,7 +120,7 @@ ul {
 }
 
 .logo {
-  font-size: 45px;
+  font-size: 30px;
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -256,7 +256,7 @@ ul {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   white-space: nowrap;
-  font-size: 50px;
+  font-size: 3vw;
 }
 
 .hero-title span {
@@ -390,12 +390,12 @@ ul {
 
 .image img {
   width: 100%;
-  height: auto;
-  object-fit: contain; /* головне */
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero-start {
-  margin-bottom: 40px;
+  margin-bottom: 100px;
   padding-left: 30px;
 }
 
