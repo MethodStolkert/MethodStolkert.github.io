@@ -120,11 +120,11 @@ ul {
 }
 
 .logo {
-  font-size: 30px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-size: 40px;
+  letter-spacing: -0.05em;
+  font-weight: 500;
   white-space: nowrap;
+  font-family: var(--font-title);
 }
 
 .nav {
@@ -296,7 +296,7 @@ ul {
   }
 
   .logo {
-    font-size: 5vw;
+    font-size: 6vw;
   }
 
   .hero {
