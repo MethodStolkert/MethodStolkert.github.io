@@ -252,11 +252,7 @@ ul {
 }
 
 .hero-title b {
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  font-size: 3vw;
+  font-weight: 500;
 }
 
 .hero-title span {
@@ -287,9 +283,6 @@ ul {
 
   .hero-grid {
     grid-template-columns: 1fr;
-  }
-  .hero-title b {
-    font-size: 5vw;
   }
 }
 
