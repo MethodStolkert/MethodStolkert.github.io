@@ -36,7 +36,7 @@ runs.forEach((run, index) => {
   animate();
 });
 
-const targetDate = new Date("2026-05-22T00:00:00").getTime();
+const targetDate = new Date("2026-05-10T00:00:00").getTime();
 
 function updateCountdown() {
   const now = new Date().getTime();
