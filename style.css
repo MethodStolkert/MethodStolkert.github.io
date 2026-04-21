@@ -1496,6 +1496,9 @@ ul {
 }
 
 @media (max-width: 767px) {
+  .fit-grid {
+    margin-top: 20px;
+  }
   .section-title {
     font-size: 6vw;
     line-height: 1.2;
@@ -1568,4 +1571,8 @@ ul {
 
 .burger.active span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
 }
