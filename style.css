@@ -621,10 +621,6 @@ ul {
   max-width: 760px;
 }
 
-.fit-text {
-  max-width: 620px;
-}
-
 .fit-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1575,4 +1571,26 @@ ul {
 
 .mb-0 {
   margin-bottom: 0 !important;
+}
+
+.fit-result {
+  margin-top: 40px;
+  padding: 28px;
+  border-left: 2px solid var(--blue);
+  background: var(--soft);
+  max-width: 620px;
+}
+
+.fit-result-label {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.fit-result-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text);
 }
