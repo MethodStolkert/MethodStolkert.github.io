@@ -1009,12 +1009,26 @@
           </div>
         </div>
       </header>
-      <!-- <div class="contacts-docs">
-        <a href="terms.html" class="doc-link">Условия и правила</a>
-        <a href="refund.html" class="doc-link">Политика возврата средств</a>
-        <a href="legal.html" class="doc-link">Юридическая информация</a>
-      </div> -->
+      <div class="contacts-docs">
+        <button class="doc-link" data-modal="terms">Условия и правила</button>
+        <button class="doc-link" data-modal="refund">
+          Политика возврата средств
+        </button>
+        <button class="doc-link" data-modal="legal">
+          Юридическая информация
+        </button>
+      </div>
     </section>
+
+    <div class="modal" id="modal">
+      <div class="modal-overlay"></div>
+
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+
+        <div class="modal-body" id="modalBody"></div>
+      </div>
+    </div>
 
     <script src="app.js"></script>
   </body>

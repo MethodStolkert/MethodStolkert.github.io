@@ -1270,7 +1270,7 @@ ul {
 }
 
 .doc-link:hover {
-  color: var(--blue);
+  opacity: 0.7;
   border-color: rgba(0, 47, 167, 0.24);
   background: var(--soft);
 }
@@ -2643,4 +2643,85 @@ body.modal-open {
   .faq-side-card {
     padding: 20px;
   }
+  .doc-link {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
+
+.section-contacts {
+  padding-bottom: 0;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+}
+
+.modal.active {
+  display: block;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  position: relative;
+  max-width: 700px;
+  width: calc(100% - 40px);
+  margin: 80px auto;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.modal-body h2 {
+  margin-bottom: 20px;
+}
+
+.modal-body p {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+  .modal-content {
+    padding: 25px;
+  }
+  .modal-close {
+    top: 5px;
+    right: 10px;
+  }
+}
+
+.modal-body h2 {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.modal-body h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.modal-body p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
 }
