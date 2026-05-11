@@ -605,22 +605,23 @@
               <li>Общий чат со всеми студентами</li>
               <li>Практические домашние задания <b>без проверки</b></li>
             </ul>
+            <div class="buttons">
+              <a
+                href="https://t.me/stellastolkert"
+                target="_blank"
+                class="pricing-more-btn"
+              >
+                Узнать больше
+              </a>
 
-            <a
-              href="https://t.me/stellastolkert"
-              target="_blank"
-              class="pricing-more-btn"
-            >
-              Узнать больше
-            </a>
-
-            <a
-              href="https://t.me/stellastolkert"
-              target="_blank"
-              class="btn btn-primary"
-            >
-              Оплатить
-            </a>
+              <button
+                class="btn btn-primary payment-open"
+                type="button"
+                data-tariff="Базовый"
+              >
+                Оплатить
+              </button>
+            </div>
           </div>
 
           <!-- С ФИДБЕКОМ -->
@@ -641,22 +642,23 @@
               <li>Общий чат со всеми студентами</li>
               <li>Практические домашние задания <b>с проверкой</b></li>
             </ul>
+            <div class="buttons">
+              <a
+                href="https://t.me/stellastolkert"
+                target="_blank"
+                class="pricing-more-btn"
+              >
+                Узнать больше
+              </a>
 
-            <a
-              href="https://t.me/stellastolkert"
-              target="_blank"
-              class="pricing-more-btn"
-            >
-              Узнать больше
-            </a>
-
-            <a
-              href="https://t.me/stellastolkert"
-              target="_blank"
-              class="btn btn-primary"
-            >
-              Оплатить
-            </a>
+              <button
+                class="btn btn-primary payment-open"
+                type="button"
+                data-tariff="Стандарт"
+              >
+                Оплатить
+              </button>
+            </div>
           </div>
 
           <!-- НАСТАВНИЧЕСТВО -->
@@ -684,21 +686,23 @@
               <li><b> VIP-чат сомной </b></li>
             </ul>
 
-            <a
-              href="https://t.me/stellastolkert"
-              target="_blank"
-              class="pricing-more-btn"
-            >
-              Узнать больше
-            </a>
+            <div class="buttons">
+              <a
+                href="https://t.me/stellastolkert"
+                target="_blank"
+                class="pricing-more-btn"
+              >
+                Узнать больше
+              </a>
 
-            <a
-              href="https://t.me/stellastolkert"
-              target="_blank"
-              class="btn btn-primary"
-            >
-              Оплатить
-            </a>
+              <button
+                class="btn btn-primary payment-open"
+                type="button"
+                data-tariff="VIP"
+              >
+                Оплатить
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1029,7 +1033,107 @@
         <div class="modal-body" id="modalBody"></div>
       </div>
     </div>
+    <div class="payment-modal" id="paymentModal" aria-hidden="true">
+      <div class="payment-modal-overlay"></div>
 
+      <div class="payment-modal-dialog">
+        <button class="payment-modal-close" type="button" aria-label="Закрыть">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <h3>Оплата по реквизитам ФОП</h3>
+
+        <p class="payment-tariff">
+          Тариф: <span id="paymentTariffName">—</span>
+        </p>
+
+        <div class="payment-tabs">
+          <button class="payment-tab active" type="button" data-account="uah">
+            Гривневый счет
+          </button>
+
+          <button class="payment-tab" type="button" data-account="eur">
+            Валютный счет
+          </button>
+        </div>
+
+        <div class="payment-details">
+          <div class="payment-row">
+            <div>
+              <span class="payment-label">Получатель</span>
+              <p id="recipientName">ФОП Осипова Ганна Віталіївна</p>
+            </div>
+            <button
+              class="copy-icon-btn"
+              data-copy="recipientName"
+              type="button"
+            >
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+
+          <div class="payment-row">
+            <div>
+              <span class="payment-label">ЄДРПОУ</span>
+              <p id="taxNumber">3131121248</p>
+            </div>
+            <button class="copy-icon-btn" data-copy="taxNumber" type="button">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+
+          <div class="payment-row">
+            <div>
+              <span class="payment-label">Рахунок IBAN</span>
+              <p id="ibanNumber">UA523052990000026003014941337</p>
+            </div>
+            <button class="copy-icon-btn" data-copy="ibanNumber" type="button">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+
+          <div class="payment-row">
+            <div>
+              <span class="payment-label">Банк</span>
+              <p id="bankName">АТ КБ “ПРИВАТБАНК”</p>
+            </div>
+            <button class="copy-icon-btn" data-copy="bankName" type="button">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+
+          <div class="payment-row">
+            <div>
+              <span class="payment-label">Назначение платежа</span>
+              <p id="paymentPurpose">Оплата курса The Method Stolkert</p>
+            </div>
+            <button
+              class="copy-icon-btn"
+              data-copy="paymentPurpose"
+              type="button"
+            >
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <button class="copy-all-btn" type="button" id="copyAllPayment">
+            Скопировать все реквизиты
+          </button>
+          <a
+            href="https://t.me/stellastolkert"
+            target="_blank"
+            class="fit-btn fit-btn-primary"
+          >
+            Отправить квитанцию
+          </a>
+        </div>
+
+        <p class="payment-note">
+          После оплаты отправьте квитанцию в Telegram для подтверждения доступа.
+        </p>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>

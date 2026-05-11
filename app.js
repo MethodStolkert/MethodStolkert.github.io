@@ -555,3 +555,139 @@ modalClose.addEventListener("click", () => {
 modal.querySelector(".modal-overlay").addEventListener("click", () => {
   modal.classList.remove("active");
 });
+
+const paymentModal = document.getElementById("paymentModal");
+const paymentOpenButtons = document.querySelectorAll(".payment-open");
+const paymentClose = document.querySelector(".payment-modal-close");
+const paymentTariffName = document.getElementById("paymentTariffName");
+
+paymentOpenButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    paymentTariffName.textContent = button.dataset.tariff || "Курс";
+    paymentModal.classList.add("active");
+    paymentModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+  });
+});
+
+function closePaymentModal() {
+  paymentModal.classList.remove("active");
+  paymentModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+paymentClose.addEventListener("click", closePaymentModal);
+
+paymentModal.addEventListener("click", (e) => {
+  if (e.target.classList.contains("payment-modal-overlay")) {
+    closePaymentModal();
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && paymentModal.classList.contains("active")) {
+    closePaymentModal();
+  }
+});
+
+const copyButtons = document.querySelectorAll(".copy-btn");
+
+copyButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    const targetId = button.dataset.copy;
+    const target = document.getElementById(targetId);
+
+    if (!target) return;
+
+    try {
+      await navigator.clipboard.writeText(target.textContent.trim());
+
+      const originalText = button.textContent;
+
+      button.textContent = "Скопировано";
+      button.classList.add("copied");
+
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.classList.remove("copied");
+      }, 1800);
+    } catch (error) {
+      console.error("Ошибка копирования:", error);
+    }
+  });
+});
+
+const accountData = {
+  uah: {
+    recipientName: "ФОП Осипова Ганна Віталіївна",
+    taxNumber: "3131121248",
+    ibanNumber: "UA523052990000026003014941337",
+    bankName: "АТ КБ “ПРИВАТБАНК”",
+    paymentPurpose: "Оплата курса The Method Stolkert",
+  },
+  eur: {
+    recipientName: "ФОП Осипова Ганна Віталіївна",
+    taxNumber: "3131121248",
+    ibanNumber: "UA343052990000026008034939205",
+    bankName: "АТ КБ “ПРИВАТБАНК”",
+    paymentPurpose: "Оплата курса The Method Stolkert",
+  },
+};
+
+let currentAccount = "uah";
+
+function renderAccount(account) {
+  currentAccount = account;
+
+  Object.keys(accountData[account]).forEach((key) => {
+    const element = document.getElementById(key);
+    if (element) element.textContent = accountData[account][key];
+  });
+
+  document.querySelectorAll(".payment-tab").forEach((tab) => {
+    tab.classList.toggle("active", tab.dataset.account === account);
+  });
+}
+
+document.querySelectorAll(".payment-tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    renderAccount(tab.dataset.account);
+  });
+});
+
+document.querySelectorAll(".copy-icon-btn").forEach((button) => {
+  button.addEventListener("click", async () => {
+    const target = document.getElementById(button.dataset.copy);
+    if (!target) return;
+
+    await navigator.clipboard.writeText(target.textContent.trim());
+
+    button.classList.add("copied");
+    setTimeout(() => button.classList.remove("copied"), 1200);
+  });
+});
+
+document
+  .getElementById("copyAllPayment")
+  .addEventListener("click", async () => {
+    const data = accountData[currentAccount];
+
+    const text = `
+Получатель: ${data.recipientName}
+ЄДРПОУ: ${data.taxNumber}
+IBAN: ${data.ibanNumber}
+Банк: ${data.bankName}
+Назначение платежа: ${data.paymentPurpose}
+`.trim();
+
+    await navigator.clipboard.writeText(text);
+
+    const button = document.getElementById("copyAllPayment");
+    button.textContent = "Реквизиты скопированы";
+
+    setTimeout(() => {
+      button.textContent = "Скопировать все реквизиты";
+    }, 1600);
+  });
+
+renderAccount("uah");
