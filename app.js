@@ -619,18 +619,31 @@ copyButtons.forEach((button) => {
 
 const accountData = {
   uah: {
+    title: "Гривневый счет",
     recipientName: "ФОП Осипова Ганна Віталіївна",
     taxNumber: "3131121248",
     ibanNumber: "UA523052990000026003014941337",
     bankName: "АТ КБ “ПРИВАТБАНК”",
     paymentPurpose: "Оплата курса The Method Stolkert",
   },
+
   eur: {
+    title: "Валютный IBAN",
     recipientName: "ФОП Осипова Ганна Віталіївна",
     taxNumber: "3131121248",
     ibanNumber: "UA343052990000026008034939205",
     bankName: "АТ КБ “ПРИВАТБАНК”",
     paymentPurpose: "Оплата курса The Method Stolkert",
+  },
+
+  swift: {
+    title: "SWIFT перевод",
+    companyName: "FOP Osipova Hanna Vitaliivna",
+    ibanNumber: "UA343052990000026008034939205",
+    bankName: "JSC CB PRIVATBANK",
+    swiftCode: "PBANUA2X",
+    bankAddress: "1D HRUSHEVSKOHO STR., KYIV, 01001, UKRAINE",
+    paymentPurpose: "Payment for The Method Stolkert course",
   },
 };
 
@@ -691,3 +704,99 @@ IBAN: ${data.ibanNumber}
   });
 
 renderAccount("uah");
+
+function renderAccount(account) {
+  currentAccount = account;
+
+  const data = accountData[account];
+
+  let html = "";
+
+  Object.entries(data).forEach(([key, value]) => {
+    if (key === "title") return;
+
+    const labelMap = {
+      recipientName: "Получатель",
+      companyName: "Company Name",
+      taxNumber: "ЄДРПОУ",
+      ibanNumber: "IBAN",
+      bankName: "Bank Name",
+      swiftCode: "SWIFT/BIC",
+      bankAddress: "Bank Address",
+      paymentPurpose: "Назначение платежа",
+    };
+
+    html += `
+      <div class="payment-row">
+        <div>
+          <span class="payment-label">${labelMap[key]}</span>
+          <p id="${key}">${value}</p>
+        </div>
+
+        <button class="copy-icon-btn" data-copy="${key}" type="button">
+          <i class="fa-regular fa-copy"></i>
+        </button>
+      </div>
+    `;
+  });
+
+  document.querySelector(".payment-details").innerHTML = html;
+
+  document.querySelectorAll(".payment-tab").forEach((tab) => {
+    tab.classList.toggle("active", tab.dataset.account === account);
+  });
+
+  initCopyButtons();
+}
+function initCopyButtons() {
+  document.querySelectorAll(".copy-icon-btn").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const target = document.getElementById(button.dataset.copy);
+
+      await navigator.clipboard.writeText(target.textContent.trim());
+
+      button.classList.add("copied");
+
+      setTimeout(() => {
+        button.classList.remove("copied");
+      }, 1200);
+    });
+  });
+}
+
+const copyAllButton = document.getElementById("copyAllPayment");
+
+function getPaymentText(account) {
+  const data = accountData[account];
+
+  if (account === "swift") {
+    return `
+Company Name: ${data.companyName}
+IBAN: ${data.ibanNumber}
+Bank Name: ${data.bankName}
+SWIFT/BIC: ${data.swiftCode}
+Bank Address: ${data.bankAddress}
+Payment Purpose: ${data.paymentPurpose}
+`.trim();
+  }
+
+  return `
+Получатель: ${data.recipientName}
+ЄДРПОУ: ${data.taxNumber}
+IBAN: ${data.ibanNumber}
+Банк: ${data.bankName}
+Назначение платежа: ${data.paymentPurpose}
+`.trim();
+}
+
+copyAllButton.addEventListener("click", async () => {
+  const text = getPaymentText(currentAccount);
+
+  await navigator.clipboard.writeText(text);
+
+  copyAllButton.textContent = "Реквизиты скопированы";
+
+  setTimeout(() => {
+    copyAllButton.textContent = "Скопировать все реквизиты";
+  }, 1600);
+});

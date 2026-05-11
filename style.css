@@ -2786,6 +2786,7 @@ body.modal-open {
 .payment-note {
   margin-bottom: 20px;
   margin-top: 20px;
+  text-align: center;
   font-size: 14px;
 }
 .buttons {
@@ -2853,7 +2854,7 @@ body.modal-open {
 
 .payment-tabs {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   margin-bottom: 18px;
   margin-top: 18px;
