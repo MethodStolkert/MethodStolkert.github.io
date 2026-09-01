@@ -2929,3 +2929,59 @@ body.modal-open {
   text-align: center;
   letter-spacing: normal;
 }
+.pricing-card {
+  position: relative;
+}
+
+/* Повышение цены */
+.pricing-increase-note {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  top: -10px;
+  right: 10px;
+  padding: 5px;
+  position: absolute;
+  border: 1px solid var(--blue);
+  border-radius: 999px;
+
+  font-family: var(--font-title);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--blue);
+  background: #fff;
+}
+
+/* Цена */
+.pricing-price {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Старая цена */
+.pricing-price-old {
+  font-size: 0.55em;
+  font-weight: 500;
+  color: var(--muted);
+  opacity: 0.8;
+
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+/* Новая цена */
+.pricing-price-new {
+  color: var(--blue);
+}
+
+/* Mobile */
+@media (max-width: 1048px) {
+  .pricing-price {
+    gap: 10px;
+  }
+}
